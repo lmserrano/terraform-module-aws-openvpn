@@ -28,7 +28,7 @@ variable "domain" {
 
 variable "extra_security_group_id" {
   description = "Extra security group to assign to the OpenVPN instance (e.g.: 'sg-3f983f98')."
-  default     = null
+  default     = ""
   type        = string
 }
 
@@ -63,13 +63,13 @@ variable "prefix" {
 
 variable "private_zone_id" {
   description = "The ID of the hosted zone for the private DNS record(s)."
-  default     = null
+  default     = ""
   type        = string
 }
 
 variable "public_zone_id" {
   description = "The ID of the hosted zone for the public DNS record(s)."
-  default     = null
+  default     = ""
   type        = string
 }
 
