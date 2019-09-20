@@ -29,11 +29,11 @@ resource "aws_instance" "openvpn" {
     volume_type = var.root_volume_type
     iops        = var.root_volume_iops
   }
-  tags = {
+  tags = merge(var.common_tags, {
     Name    = "${var.prefix}${var.name}${format("%02d", count.index + 1)}"
     OpenVPN = "true"
     Service = "OpenVPN"
-  }
+  })
 }
 
 data "template_file" "openvpn" {
@@ -99,11 +99,11 @@ resource "aws_security_group" "openvpn" {
   lifecycle {
     create_before_destroy = true
   }
-  tags = {
+  tags = merge(var.common_tags, {
     Name    = "${var.prefix}${var.name}"
     OpenVPN = "true"
     Service = "OpenVPN"
-  }
+  })
 }
 
 resource "aws_security_group" "openvpn_public" {
@@ -118,9 +118,9 @@ resource "aws_security_group" "openvpn_public" {
   lifecycle {
     create_before_destroy = true
   }
-  tags = {
+  tags = merge(var.common_tags, {
     Name    = "${var.prefix}${var.name}-public"
     OpenVPN = "true"
     Service = "OpenVPN"
-  }
+  })
 }
