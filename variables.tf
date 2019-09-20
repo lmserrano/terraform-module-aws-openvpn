@@ -124,3 +124,8 @@ variable "vpn_dns" {
   type        = list(string)
 }
 
+variable "common_tags" {
+  description = "Map of common tags to be used across the created infrastructure resources."
+  default = {}
+  type = map(string)
+}
