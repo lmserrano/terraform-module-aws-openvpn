@@ -124,6 +124,12 @@ variable "vpn_dns" {
   type        = list(string)
 }
 
+variable "vpn_ssh_ingress_ips" {
+  description = "List of VPN Ingress IPs. Only these will be allowed for SSH"
+  default = []
+  type = list(string)
+}
+
 variable "common_tags" {
   description = "Map of common tags to be used across the created infrastructure resources."
   default = {}

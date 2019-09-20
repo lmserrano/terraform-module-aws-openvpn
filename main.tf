@@ -89,7 +89,8 @@ resource "aws_security_group" "openvpn" {
     from_port = var.ssh_port
     to_port   = var.ssh_port
     protocol  = "tcp"
-    self      = true
+    #self      = true
+    cidr_blocks = var.vpn_ssh_ingress_ips
   }
   egress {
     from_port   = 0
