@@ -26,10 +26,10 @@ variable "domain" {
   type        = string
 }
 
-variable "extra_security_group_id" {
-  description = "Extra security group to assign to the OpenVPN instance (e.g.: 'sg-3f983f98')."
-  default     = ""
-  type        = string
+variable "extra_security_group_ids" {
+  description = "Extra security group ids to assign to the OpenVPN instance (e.g.: ['sg-3f983f98'])."
+  default     = []
+  type        = list(string)
 }
 
 variable "instance_type" {

@@ -23,7 +23,8 @@ resource "aws_instance" "openvpn" {
   source_dest_check           = false
   subnet_id                   = element(var.subnet_ids, count.index)
   user_data                   = element(data.template_file.openvpn.*.rendered, count.index)
-  vpc_security_group_ids      = [aws_security_group.openvpn.id,aws_security_group.openvpn_public.id,var.extra_security_group_id]
+  vpc_security_group_ids      = concat([aws_security_group.openvpn.id,aws_security_group.openvpn_public.id],var.extra_security_group_ids)
+
   root_block_device {
     volume_size = var.root_volume_size
     volume_type = var.root_volume_type
